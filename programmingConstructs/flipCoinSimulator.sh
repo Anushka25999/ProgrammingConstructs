@@ -13,7 +13,25 @@ do
 	else
 		count_tails=$(($count_tails + 1))
 	fi
-done
 
-echo "Heads won $count_heads times"
-echo "Tails won $count_tails times"
+	#if count of tails reaches 21
+	if (($count_tails == 21))
+	then
+		if(( $count_tails == $count_heads ))
+		then
+			echo "Its a tie"
+			break;
+		fi
+		#then display that tails won x times
+		echo 'tails won by'$(($count_tails-$count_heads)) 'times'
+		break;
+	fi
+
+	#if count of heads reaches 21 
+	if (($count_heads == 21))
+	then
+		#then display heads won 21 times
+		echo 'heads won by'$(($count_tails-$count_heads)) 'times'
+		break;
+	fi
+done

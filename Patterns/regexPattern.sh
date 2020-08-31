@@ -39,3 +39,15 @@ then
 else
 	echo "Invalid Email Address"
 fi
+
+# Phone Number
+read -p "Enter your Phone Number " phone
+
+pat3="^[0-9]{2,4}[[:space:]][7-9]{1}[0-9]{9}$"
+
+if [[ $phone =~ $pat3 ]]
+then
+	echo "Valid Phone Number"
+else
+	echo "Invalid Phone Number"
+fi

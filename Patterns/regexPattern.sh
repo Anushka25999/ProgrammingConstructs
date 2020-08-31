@@ -55,7 +55,7 @@ fi
 # Password
 read -p "Enter your Password " password
 
-pat4="[0-9[:lower:][:upper:]]{8,}"
+pat4="^(.{8,}$)"
 
 if [[ $password =~ $pat4 ]]
 then

@@ -100,8 +100,19 @@ do
 done
 
 #display results percentage
-echo "Heads percentage : " $(awk '{print ($1*100/$2)}' <<< "${count_heads} ${max_iterations}")
-echo "Tails percentage : " $(awk '{print ($1*100/$2)}' <<< "${count_tails} ${max_iterations}")
+H=$(awk '{print ($1*100/$2)}' <<< "${count_heads} ${max_iterations}")
+T=$(awk '{print ($1*100/$2)}' <<< "${count_tails} ${max_iterations}")
+
+echo "Heads percentage : $H"
+echo "Tails percentage : $T"
+
+echo The winner in Singlet category is :
+if(( $H>$T ))
+then
+	echo "The winner in Singlet category is : Heads"
+else
+	echo "The winner in Singlet category is : Tails"
+fi
 
 #create dictionary storing percentage
 declare -A flip
@@ -114,6 +125,17 @@ echo "HH percentage : ${flip["HH percentage "]}"
 echo "TT percentage : ${flip["TT percentage "]}"
 echo "HT percentage : ${flip["HT percentage "]}"
 echo "TH percentage : ${flip["TH percentage "]}"
+
+max=0
+for x in ${flip[@]}
+do
+	if(( ${flip[$x]} > $max ))
+	then
+		max=${flip[$x]}
+		key=${!flip[$x]}
+	fi
+done
+echo "The winner in Doublet category is : $key"
 
 #create dictionary storing percentage
 declare -A flip_triplet
@@ -134,4 +156,15 @@ echo "THH percentage : ${flip_triplet["THH percentage "]}"
 echo "THT percentage : ${flip_triplet["THT percentage "]}"
 echo "TTH percentage : ${flip_triplet["TTH percentage "]}"
 echo "TTT percentage : ${flip_triplet["TTT percentage "]}"
+
+max=0
+for x in ${flip_triplet[@]}
+do
+        if(( ${flip_triplet[$x]} > $max ))
+        then
+                max=${flip_triplet[$x]}
+                key=${!flip_triplet[$x]}
+        fi
+done
+echo "The winner in Triplet category is : $key"
 

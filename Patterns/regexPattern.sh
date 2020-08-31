@@ -51,3 +51,15 @@ then
 else
 	echo "Invalid Phone Number"
 fi
+
+# Password
+read -p "Enter your Password " password
+
+pat4="[0-9[:lower:][:upper:]]{8,}"
+
+if [[ $password =~ $pat4 ]]
+then
+	echo "Valid Password"
+else
+	echo "Invalid Password"
+fi

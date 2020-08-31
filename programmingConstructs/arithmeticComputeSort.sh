@@ -18,6 +18,7 @@ do
 	arr[((count++))]=$x
 done
 
+# sort in descending order
 for ((i = 0; i<$count; i++))
 do
     for((j = 0; j<$count-i-1; j++))

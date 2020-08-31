@@ -32,5 +32,5 @@ do
     done
 done
 
-echo "Results in Descending :"
+echo "Results in Descending Order:"
 echo ${arr[@]}

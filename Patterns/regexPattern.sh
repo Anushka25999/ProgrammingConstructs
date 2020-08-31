@@ -55,7 +55,11 @@ fi
 # Password
 read -p "Enter your Password " password
 
+#minimum 8 characters
 pat4="^(.{8,}$)"
+
+# should have at least 1 upper case
+pat4="^.*[[:upper:]]{1,}.*(.{8,}$)"
 
 if [[ $password =~ $pat4 ]]
 then

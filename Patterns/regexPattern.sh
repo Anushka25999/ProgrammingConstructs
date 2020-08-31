@@ -64,6 +64,9 @@ pat4="^.*[[:upper:]]{1,}.*(.{8,}$)"
 # should have at least 1 numeric number
 pat4="^(.*[[:upper:]]{1,}.)*(.*[0-9]{1,}.)*(.{8,}$)"
 
+#has exactly 1 special character
+pat4="^(.*[[:upper:]]{1,}.)*(.*[0-9]{1,}.)*(.*[@$!%*#?&])?(.{8,}$)"
+
 if [[ $password =~ $pat4 ]]
 then
 	echo "Valid Password"

@@ -19,7 +19,8 @@ do
 	then
 		if(( $count_tails == $count_heads ))
 		then
-			echo "Its a tie"
+			result=$( tie_breaker )
+			echo result
 			break;
 		fi
 		#then display that tails won x times
@@ -35,3 +36,41 @@ do
 		break;
 	fi
 done
+
+# tiebreaker function
+function tiebreaker() {
+
+count_heads=0
+count_tails=0
+while true;
+do
+
+	#get random number between 0,1 and check if its 1
+	if(($(($RANDOM%2)) == 1 ))
+	then
+
+	        #if its 1 then increase count of heads
+	        count_heads=$(($count_heads + 1))
+	else
+
+	        #else increase tails count by 1
+        	count_tails=$(($count_tails + 1))
+	fi
+
+	#if difference of the two are less than -1
+	if (( $(($count_tails-$count_heads)) < -1 ))
+	then
+
+		echo 'heads won by 2 flips'
+	fi
+
+	#if difference of the two are greater than 1
+	if (( $(($count_tails-$count_heads)) > 1 ))
+	then
+
+		echo 'tails won by 2 flips'
+	fi
+
+done
+
+}
